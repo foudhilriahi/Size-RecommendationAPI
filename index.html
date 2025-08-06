@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Size Recommendation System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Professional Size Recommendation System</h1>
+            <p>Find your perfect size with our advanced morphology algorithm</p>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress-step active" data-step="1">1. Measurements</div>
+            <div class="progress-step" data-step="2">2. Fit Preferences</div>
+            <div class="progress-step" data-step="3">3. Body Type</div>
+            <div class="progress-step" data-step="4">4. Results</div>
+        </div>
+
+        <!-- Step 1: Measurements -->
+        <div class="step active" id="step1">
+            <h2>📏 Body Measurements</h2>
+            <p>Enter your measurements in centimeters</p>
+            
+            <div class="measurement-sections">
+                <div class="section">
+                    <h3><div class="section-icon">👔</div>Upper Body</h3>
+                    <div class="input-group">
+                        <label for="cou">Neck Circumference (cm)</label>
+                        <input type="number" id="cou" name="cou" min="30" max="50" step="0.5">
+                        <span class="help-text">Measure around the base of the neck</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="poitrine">Chest Circumference (cm) *</label>
+                        <input type="number" id="poitrine" name="poitrine" min="70" max="150" step="0.5" required>
+                        <span class="help-text">Measure around the fullest part of the chest</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="abdomen">Waist Circumference (cm)</label>
+                        <input type="number" id="abdomen" name="abdomen" min="60" max="140" step="0.5">
+                        <span class="help-text">Measure at the natural waist</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="epaules">Shoulder Width (cm) *</label>
+                        <input type="number" id="epaules" name="epaules" min="35" max="60" step="0.5" required>
+                        <span class="help-text">Distance between shoulder points</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="longueur_bras">Arm Length (cm)</label>
+                        <input type="number" id="longueur_bras" name="longueur_bras" min="50" max="80" step="0.5">
+                        <span class="help-text">From shoulder to wrist</span>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><div class="section-icon">👖</div>Lower Body</h3>
+                    <div class="input-group">
+                        <label for="bassin">Natural Waist (cm) *</label>
+                        <input type="number" id="bassin" name="bassin" min="60" max="130" step="0.5" required>
+                        <span class="help-text">Measure at the narrowest point</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="hanches">Hip Circumference (cm) *</label>
+                        <input type="number" id="hanches" name="hanches" min="70" max="140" step="0.5" required>
+                        <span class="help-text">Measure at the fullest part of hips</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="cuisse">Thigh Circumference (cm)</label>
+                        <input type="number" id="cuisse" name="cuisse" min="40" max="80" step="0.5">
+                        <span class="help-text">Measure at the fullest part of thigh</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="mollet">Calf Circumference (cm)</label>
+                        <input type="number" id="mollet" name="mollet" min="25" max="50" step="0.5">
+                        <span class="help-text">Measure at the fullest part of calf</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="jambe_interieur">Inseam Length (cm)</label>
+                        <input type="number" id="jambe_interieur" name="jambe_interieur" min="60" max="100" step="0.5">
+                        <span class="help-text">From crotch to ankle</span>
+                    </div>
+                    <div class="input-group">
+                        <label for="hauteur_hanches">Hip Height (cm)</label>
+                        <input type="number" id="hauteur_hanches" name="hauteur_hanches" min="80" max="120" step="0.5">
+                        <span class="help-text">From floor to hip level</span>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="nextStep()">Next →</button>
+        </div>
+
+        <!-- Step 2: Fit Preferences -->
+        <div class="step" id="step2">
+            <h2>👔 Fit Preferences</h2>
+            <p>Choose your preferred fit for each area</p>
+            
+            <div class="fit-sections">
+                <div class="section">
+                    <h3><div class="section-icon">👔</div>Upper Body</h3>
+                    <div class="fit-preferences" id="fit-top">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><div class="section-icon">👖</div>Lower Body</h3>
+                    <div class="fit-preferences" id="fit-bottom">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-buttons">
+                <button class="btn-secondary" onclick="prevStep()">← Previous</button>
+                <button class="btn-primary" onclick="nextStep()">Next →</button>
+            </div>
+        </div>
+
+        <!-- Step 3: Body Type -->
+        <div class="step" id="step3">
+            <h2>🧬 Body Type Information</h2>
+            
+            <div class="morphotype-form">
+                <div class="input-group">
+                    <label>Gender</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="homme" required>
+                            <span>👨 Male</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="gender" value="femme" required>
+                            <span>👩 Female</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" name="height" min="140" max="220" step="1" required>
+                    <span class="help-text">Your height in centimeters</span>
+                </div>
+
+                <div class="input-group">
+                    <label>Body Type</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="morphotype" value="mince" required>
+                            <span>🪶 Slim</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="morphotype" value="normal" required>
+                            <span>⚖️ Average</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="morphotype" value="fort" required>
+                            <span>💪 Full</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="morphotype" value="athletique" required>
+                            <span>🏃 Athletic</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="brand-selection">
+                    <div class="input-group">
+                        <label for="brand-select">Brand Preference (Optional)</label>
+                        <select id="brand-select" name="brand">
+                            <option value="">Select a brand for specific recommendations</option>
+                        </select>
+                        <span class="help-text">Get brand-specific size adjustments</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step-buttons">
+                <button class="btn-secondary" onclick="prevStep()">← Previous</button>
+                <button class="btn-primary" onclick="getRecommendation()">🎯 Get My Recommendation</button>
+            </div>
+        </div>
+
+        <!-- Step 4: Results -->
+        <div class="step" id="step4">
+            <h2>🎉 Your Professional Size Recommendations</h2>
+            <div id="results-container">
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Analyzing your measurements...</p>
+                </div>
+                <div id="results" style="display: none;">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="step-buttons" id="results-buttons" style="display: none;">
+                <button class="btn-secondary" onclick="prevStep()">← Modify</button>
+                <button class="btn-primary" onclick="saveResults()">💾 Save Results</button>
+                <button class="btn-primary" onclick="resetForm()">🔄 New Analysis</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
